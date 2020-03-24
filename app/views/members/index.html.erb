@@ -35,7 +35,11 @@
         </td>
 
         <td>
-          Placeholder for Actions
+          <%= link_to "Edit", edit_member_path(member), class: "btn btn-success" %>
+
+          <% if member.authorized_for_app %>
+            <%= link_to "Remove from App", app_removal_path(member), class: "btn btn-danger ml-3" %>
+          <% end %>
         </td>
 
       </tr>

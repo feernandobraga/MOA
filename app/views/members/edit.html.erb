@@ -1,0 +1,56 @@
+<h1>Edit Member</h1>
+
+<%= form_for @member do |f|%>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <%= f.label :membership_number %>
+      <%= f.text_field :membership_number, autofocus: true, autocomplete: 'membership_number', class: 'form-control' %>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: 'first name', class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control' %>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group">
+      <%= f.check_box :authorized_for_app %>
+      <%= f.label :authorized_for_app %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-success' %>
+    </div>
+
+    <div class="form-group ml-3">
+      <%= link_to "Delete Member", member_path(@member), method: :delete,
+                  data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <%= link_to "Cancel and go back", members_path, class: "text-decoration-none" %>
+  </div>
+
+<% end %>
