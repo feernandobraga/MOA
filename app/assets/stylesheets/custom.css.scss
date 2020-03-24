@@ -1,1 +1,14 @@
 @import 'bootstrap/dist/css/bootstrap';
+
+.moa-navbar{
+  background-color: #FCD116 ;
+  border-bottom: 5px solid #008751;
+}
+
+.moa-navbar > *{
+  //font-size: 120%;
+}
+
+.navbar-brand{
+  font-size: 2em;
+}

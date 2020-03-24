@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <%# renders the navbar %>
+    <%= render 'layouts/navigation' %>
+
+
+    <div class="container">
+
+      <%# messages will be located on the layouts/_messages.html.erb partial %>
+      <%= render 'layouts/messages' %>
+
+      <%= yield %>
+
+    </div>
+
+
+
+
   </body>
 </html>

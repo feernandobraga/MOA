@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light mb-3 p-5 moa-navbar">
+  <a class="navbar-brand" href="#">MOA</a>
+
+  <% if current_member %>
+    <%# it will only display the menu options if the member is logged in %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Members
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to  %>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+
+      <!-- right-hand side menu-->
+      <ul class="navbar-nav ml-auto">
+
+        <!-- logout -->
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_member_session_path, method: :delete, class: "btn btn-success mr-3" %>
+        </li>
+
+
+      </ul>
+      <!-- end right-hand side menu-->
+
+  <% end %>
+  </div>
+</nav>
