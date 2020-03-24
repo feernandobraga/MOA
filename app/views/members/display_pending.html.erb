@@ -1,0 +1,52 @@
+<h1>Authorization Pending</h1>
+
+<table class="table table-striped table-hover">
+
+  <thead>
+  <tr>
+    <th scope="col">Membership Number</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <% @members.each do |member| %>
+
+    <tr>
+
+      <td>
+        <%= member.membership_number %>
+      </td>
+
+      <td>
+        <%= member.first_name %>
+      </td>
+
+      <td>
+        <%= member.last_name %>
+      </td>
+
+      <td>
+        <%= member.email %>
+      </td>
+
+      <td>
+        <%= link_to "Approve", approve_path(member), class: "btn btn-success" %>
+
+        <%= link_to "Deny", deny_path(member), class: "btn btn-danger ml-3", method: :delete,
+                      data: {confirm: "This will delete the member, proceed?"} %>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+
+
+  </tbody>
+</table>

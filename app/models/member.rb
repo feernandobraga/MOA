@@ -5,4 +5,10 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+
+  def self.is_pending_empty?
+    where(authorized_for_app: false).blank?
+  end
+
+
 end
