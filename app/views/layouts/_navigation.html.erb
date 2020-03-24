@@ -12,11 +12,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <%= link_to "Events", events_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
+
+          <!-- Members Drop Down-->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Members
@@ -28,6 +30,23 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
+          <!-- end Members Drop Down-->
+
+          <!-- Events Drop Down-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Events
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "All Events", events_path, class: "dropdown-item"%>
+              <%= link_to "Create Event", new_event_path, class: "dropdown-item"%>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <!-- end Events Drop Down-->
+
+
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>

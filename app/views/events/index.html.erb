@@ -1,0 +1,23 @@
+<h1>Upcoming Events</h1>
+
+<% @events.each do |event| %>
+
+  <div class="col-md-9">
+    <div class="card mb-4">
+      <div class="card-header">
+        <%= event.time.to_formatted_s(:long) %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text"><%= truncate(event.description, length: 100) %></p>
+        <footer class="blockquote-footer mb-2 pb-1">Published by <%=event.member.first_name%></footer>
+
+        <!--<div class="card-footer bg-transparent border-secondary">idk</div>-->
+
+        <%= link_to "Show more", event_path(event), class: "btn btn-outline-success" %>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
