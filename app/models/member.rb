@@ -7,6 +7,9 @@ class Member < ApplicationRecord
   has_many :events
 
   def self.is_pending_empty?
+    # this method is called from the members#display_pending and returns:
+    #   * true - if a there is no more pending requests
+    #   * false - if there are requests to be displayed
     where(authorized_for_app: false).blank?
   end
 

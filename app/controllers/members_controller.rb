@@ -6,6 +6,9 @@ class MembersController < ApplicationController
   end
 
   def remove_from_app
+    # this is called from the Remove from App button in the members/index.html.erb
+    # it grabs the members passed within the params, sets the value of authorized_for_app to false
+    # and saves it
 
     @member = Member.find(params[:id])
     @member.authorized_for_app = false
@@ -50,15 +53,21 @@ class MembersController < ApplicationController
     @member.destroy
     flash[:notice] = "The member was successfully deleted"
     redirect_to members_path
-
   end
 
   def display_pending
+    # this method is called from the Authorization Pending button in the navbar.
+    # it searches in the DB for members that have the authorized_for_app boolean set to false.
+
     @members = Member.all.where(authorized_for_app: false)
   end
 
 
   def approve_access
+    # this method gets the member id from the display_pending.html.erb
+    # Then it changes the boolean authorized_for_app to true and saves it on the DB
+    # at the end it runs the redirect_from_pending, which is a private method from the members controller
+
     @member = Member.find(params[:id])
 
     @member.authorized_for_app = true
@@ -79,6 +88,9 @@ class MembersController < ApplicationController
   end
 
   def deny_access
+    # if a user has his/hers access denied from the awaiting for approval page, the user is deleted from the DB.
+    # after the deletion, the function redirect_from_pending check if there's more requests to be approved and then
+    # redirects it to the right page accordingly.
 
     @member = Member.find(params[:id])
     @member.destroy
@@ -89,8 +101,6 @@ class MembersController < ApplicationController
   end
 
 
-
-
   private
 
   def member_params
@@ -98,6 +108,11 @@ class MembersController < ApplicationController
   end
 
   def redirect_from_pending
+    # this method is called from members#approve_access and members#deny_access
+    # I've created this method to check if the pending authorization list is empty on the DB
+    # by using the is_pending_empty? method from the Member model.
+    #   * If it is empty, it directs to members_path
+    #   * If it is not empty, it directs to pending_path
 
     if Member.is_pending_empty?
 
@@ -107,6 +122,7 @@ class MembersController < ApplicationController
       redirect_to pending_path
 
     end
+
   end
 
 
