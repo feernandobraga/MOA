@@ -1,0 +1,21 @@
+<h1>Attendance</h1>
+
+
+
+  <div class="col-md-9">
+    <div class="card mb-4">
+      <div class="card-header">
+      <%= @attendance.event %> <%= @attendance.time %> 
+
+      </div>
+      <% @attendances.each do |attendance| %>
+        
+        <p class="card-title"><%= truncate(attendance.id) %></p>
+        <p class="card-title"> <%=attendance.member.first_name%></p>
+
+        <!--<div class="card-footer bg-transparent border-secondary">idk</div>-->
+        <%end%>
+        </div>
+      </div>
+    </div>
+  </div>

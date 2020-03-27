@@ -5,6 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events
+  has_many :attendances
 
   def self.is_pending_empty?
     # this method is called from the members#display_pending and returns:

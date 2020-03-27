@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "news#index"
 
   resources :members
+  resources :attendance
+
 
   get 'remove_from_app/:id', to: 'members#remove_from_app', as: 'app_removal'
 
