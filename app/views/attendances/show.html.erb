@@ -1,0 +1,30 @@
+<div class="row ">
+<h1 class="col-sm-7">Attendance</h1>
+<h3 class="col-sm-4">Search</h3>
+</div>
+<div class="row ">
+    <%= render 'attendance', obj: @attendances %>
+
+    <div class= 'search-area col-sm-4   no-top-padding'>
+      
+        <%= form_tag search_member_path, remote: true,  method: :get do %>
+        
+            <div class='form-group row no-top-padding'>
+                    <div class='col-sm-10 no-right-padding'>
+                        <%= text_field_tag :member_name, params[:member_name], placeholder: "Search for member names", autofocus: true, class: 'form-control form-control-md'%>
+                    </div>
+                <div class='col-sm-2 no-left-padding'>
+                    <%= button_tag type: :submit, class: "btn btn-success " do%>
+                        <%= fa_icon 'search '%>
+                    <%end%>
+               
+                </div>
+            </div>
+
+        <%end%>
+  
+         <%= render 'members/result'%>
+    </div>
+     </div>
+     </div>        
+

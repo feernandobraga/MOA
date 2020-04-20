@@ -1,0 +1,22 @@
+
+<%@events = Event.all%>
+<div class="dropdown col-md-6">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Event Dropdown 
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    <% @events.each do |event| %>
+            <tr>
+               
+                <% if  event %>
+                <a class="dropdown-item"><%=link_to event.time%></a>
+
+                <%end%>
+                
+            </tr>
+            <%end%>
+  </div>
+</div>
+<br>

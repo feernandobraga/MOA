@@ -1,0 +1,28 @@
+<div class="col-sm-7  ">
+    <div class="card mb-4">
+        
+     
+        <table class="col-sm-12 table table-hover">
+            <tr>
+            <th> Membership ID</th>
+            <th> First Name</th>
+            <th> Last Name</th>
+             <% @attendance.each do |atten| %>
+            <tr>
+               
+                <% if  atten %>
+                <td><%=atten.member.id %></td>
+                <td> <%=atten.member.first_name%></td>
+                <td> <%=atten.member.last_name%></td>
+                <td><%= link_to "Delete", attendance_path(atten.id), method: :delete, class: "btn btn-danger btn-sm ml-2", data: {confirm: "You are about to delete this Attendee. Confirm?"}%> </td>
+
+                
+                <!--<div class="card-footer bg-transparent border-secondary">idk</div>-->
+                <%end%>
+                
+            </tr>
+            <%end%>
+        </table>
+        
+    </div>
+</div>

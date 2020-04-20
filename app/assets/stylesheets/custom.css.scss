@@ -12,3 +12,20 @@
 .navbar-brand{
   font-size: 2em;
 }
+
+.search-area {
+  padding-top: 50px;
+}
+
+.no-right-padding{
+  padding-right: 0;
+}
+.no-left-padding{
+  padding-left: 0;
+}
+.results-block {
+  display: inline-block;
+} 
+.table td, th {
+  text-align: center;   
+}

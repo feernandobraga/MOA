@@ -100,6 +100,35 @@ class MembersController < ApplicationController
 
   end
 
+  def attendance
+    
+  end
+
+  def search
+    if params[:member_name].present?  
+      @member_names= Member.search(params[:member_name])
+
+      if @member_names
+       
+         render partial: 'members/result' 
+      else  
+      
+          flash.now[:alert]= "Enter a valid symbol to search"
+            render partial: 'members/result' 
+              
+      end
+    else 
+        flash.now[:alert]= "Enter symbol to search"
+        render partial: 'members/result'
+        
+     
+
+
+    end
+    
+
+  end
+
 
   private
 
