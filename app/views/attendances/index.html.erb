@@ -1,0 +1,32 @@
+<h1> Leader Board</h1>
+
+<%= render 'events/event_selector'%>
+
+<% if @attendances %>
+
+<div class="col-md-9">
+    <div class="card mb-4">
+<table class="table">
+            <tr>
+            <th> Points</th>
+            <th> First Name</th>
+            <th> Last Name</th>
+            </tr>
+            <% @attendances.each {|id, count| %>
+                <tr>
+                    
+                    <td><%= count %></td>
+                    <td> <%=Member.find(id).first_name%></td>
+                    <td> <%=Member.find(id).last_name %></td>
+                    
+
+                </tr>
+             
+            <%}%>
+
+</table>
+</div>
+</div>
+<% end %>
+
+

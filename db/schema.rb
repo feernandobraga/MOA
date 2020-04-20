@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_041110) do
+ActiveRecord::Schema.define(version: 2020_04_19_211212) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "member_id", null: false
-    t.datetime "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "time"
     t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["member_id", "event_id"], name: "index_attendances_on_member_id_and_event_id", unique: true
     t.index ["member_id"], name: "index_attendances_on_member_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_entries_on_member_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -50,7 +60,18 @@ ActiveRecord::Schema.define(version: 2020_03_27_041110) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "news", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_news_on_member_id"
+  end
+
   add_foreign_key "attendances", "events"
   add_foreign_key "attendances", "members"
+  add_foreign_key "entries", "members"
   add_foreign_key "events", "members"
+  add_foreign_key "news", "members"
 end

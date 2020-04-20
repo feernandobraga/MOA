@@ -1,0 +1,21 @@
+<div class= "results-block col-sm-12">
+
+    <%= render 'layouts/messages' %>
+</div>
+
+<%if @member_names%>
+<div class= "card- card-header results-block col-sm-12">
+    <%@member_names.each do |member| %>
+    <p>
+    <strong>ID: </strong><%=member.id%>
+    <strong>First Name: </strong><%=member.first_name%>
+    <strong>Last Name: </strong><%=member.last_name%>
+   
+    <%= link_to 'Add member', attendances_path(event_id: $current_event, member_id: member.id, time: Event.find($current_event).time ), method: :post, class: 'btn btn-xs btn-danger' %>
+     </p>
+<%end%>
+    </div>
+
+<%end%>
+<div id="results">
+</div>

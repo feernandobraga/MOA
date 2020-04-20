@@ -18,7 +18,8 @@
         <%= link_to "Delete event", event_path(@event), method: :delete, class: "btn btn-danger btn-sm ml-2",
         
                     data: {confirm: "You are about to delete this Event. Confirm?"} %>
-        <%= link_to "Attendance event", attendance_index_path,  class: "btn btn-success btn-sm ml-2"%>
+        <%= link_to "Event Attendance", attendance_path(@event.id), class: "btn btn-success btn-sm ml-2"%>
+        <% $current_event= @event.id %>
 
       </div>
 
@@ -26,5 +27,7 @@
   </div>
 
   <%= link_to "Cancel and go back", events_path, class: "text-decoration-none" %>
+
+    <%#= render 'attendance/attendance', obj: @event.attendances %>
 
 <% end %>
