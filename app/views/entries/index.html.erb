@@ -1,4 +1,4 @@
-
+<%if current_member.access_level=="AD"%>
 <%#= link_to 'Sign out', destroy_member_session_path, method: :delete%>
 <h1>News  </h1>
  
@@ -22,3 +22,7 @@
   </div>
 
 <% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

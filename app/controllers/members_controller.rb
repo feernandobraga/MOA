@@ -75,7 +75,7 @@ class MembersController < ApplicationController
     if @member.save
 
       flash[:notice] = "Access granted"
-
+      
     else
 
       flash[:alert] = "Could not grant access"
@@ -99,11 +99,56 @@ class MembersController < ApplicationController
     redirect_from_pending
 
   end
+  def access_level
+    @members = Member.all
+  end
 
-  def attendance
+  def make_trip_coordinator
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => "TC")
+    redirect_to access_level_path
+
+  end
+
+  def make_membership_admin
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => "MA")
+    redirect_to access_level_path
+
+  end
+  def make_administrator
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => "AD")
+    redirect_to access_level_path
+
+  end
+
+  def deny_trip_coordinator
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => nil)
+    redirect_to access_level_path
+
+  end
+
+  def deny_membership_admin
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => nil)
+    redirect_to access_level_path
     
   end
 
+  def deny_administrator
+
+    @member = Member.find(params[:id])
+    @member.update(:access_level => nil)
+    redirect_to access_level_path
+
+  end
   def search
     if params[:member_name].present?  
       @member_names= Member.search(params[:member_name])
@@ -130,10 +175,11 @@ class MembersController < ApplicationController
   end
 
 
+
   private
 
   def member_params
-    params.require(:member).permit(:email, :membership_number, :first_name, :last_name, :authorized_for_app)
+    params.require(:member).permit(:email, :membership_number, :first_name, :last_name, :authorized_for_app, :access_level)
   end
 
   def redirect_from_pending

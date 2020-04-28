@@ -27,6 +27,10 @@ gem 'devise-bootstrap-views', '~>1.0'
 
 gem 'font-awesome-rails'
 
+gem 'bootstrap-datepicker-rails'
+
+gem 'jquery-ui-rails', '~> 4.2.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

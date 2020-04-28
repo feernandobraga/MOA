@@ -1,6 +1,8 @@
 class AttendancesController < ApplicationController
     def index
-        @attendances = Attendance.group("attendances.member_id").order("count(attendances.member_id) DESC").count 
+      # date1="2020-01-01.beginning_of_day"
+       #date2="2020-04-25.end.of.day"
+         #@attendances = Attendance.where("attendances.time BETWEEN ? AND ?", date1, date2).group("attendances.member_id").order("count(attendances.member_id) DESC").count 
     end
 
     def create
@@ -40,7 +42,18 @@ class AttendancesController < ApplicationController
 
     
     end # end destroy
-    
+    def search
+      if params[:date1, :date2].present?  
+        @leader_search= Attendance.where("attendances.time BETWEEN ? AND ?", ":date1.beginning_of_day", ":date2.end_of_day").group("attendances.member_id").order("count(attendances.member_id) DESC").count 
+
+        
+        else 
+          flash.now[:alert]= "Enter a valid range of dates"
+          render partial: 'leader_board'
+           
+      end
+    end
+
       private
     
       def attendance_params
