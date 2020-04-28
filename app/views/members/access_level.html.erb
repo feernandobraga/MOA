@@ -1,0 +1,82 @@
+<%if current_member.access_level=="AD"%>
+
+<h1>Access Level Management</h1>
+
+<table class="table table-striped table-hover">
+
+  <thead>
+    <tr>
+      <th scope="col">Membership Number</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <%if current_member.access_level="AD"%>
+      <th scope="col">Trip Coordinator</th>
+      <th scope="col">Membership Admin</th>
+      <th scope="col">Administrator</th>
+      <%end%>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+    <% @members.each do |member| %>
+    <%if current_member.id != member.id%>
+      <tr>
+
+        <td>
+          <%= member.membership_number %>
+        </td>
+
+        <td>
+          <%= member.first_name %>
+        </td>
+
+        <td>
+          <%= member.last_name %>
+        </td>
+        
+       <%if current_member.access_level="AD"%>
+        <%if member.access_level!= "TC" %>
+        <td>
+           <%= link_to "Give Access", make_tc_path(member), class: "btn btn-warning ml-3 " %>
+        </td>
+        <%elsif member.access_level= "TC"%>
+        <td>
+           <%= link_to "Deny Access", deny_tc_path(member), class: "btn btn-danger  ml-3" %>
+        </td>
+        <%end%>
+        <%if member.access_level!="MA" %>
+        <td>
+           <%= link_to "Give Access", make_ma_path(member) ,  class: "btn btn-warning ml-3"  %>
+
+        </td>
+        <%elsif member.access_level= "MA"%>
+        <td>
+           <%= link_to "Deny Access", deny_ma_path(member) ,  class: "btn btn-danger ml-3"  %>
+
+        </td>
+        <%end%>
+         <%if member.access_level!="AD" %>
+        <td>
+           <%= link_to "Give Access", make_ad_path(member) ,  class: "btn btn-warning ml-3"  %>
+
+        </td>
+        <%elsif member.access_level= "AD"%>
+        <td>
+           <%= link_to "Deny Access", deny_ad_path(member) ,  class: "btn btn-danger ml-3"  %>
+
+        </td>
+        <%end%>
+      <%end%>
+      </tr>
+    <% end %>
+    <% end %>
+
+
+
+
+</table>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

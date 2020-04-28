@@ -1,3 +1,5 @@
+<%if current_member.access_level=="AD"%>
+
 <div class="row ">
 <h1 class="col-sm-7">Attendance</h1>
 <h3 class="col-sm-4">Search</h3>
@@ -28,3 +30,7 @@
      </div>
      </div>        
 
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

@@ -1,6 +1,7 @@
+<%if current_member.access_level=="AD"%>
 <h1>Edit News</h1>
 
-<%= form_for @wnew do |f|%>
+<%= form_for @entry do |f|%>
 
   <div class="form-row">
 
@@ -29,3 +30,7 @@
   </div>
 
 <% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

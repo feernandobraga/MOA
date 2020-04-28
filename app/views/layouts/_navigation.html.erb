@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light mb-3 p-5 moa-navbar">
   
   <%= link_to "MOA", root_path, class: "display-3 text-light"  %>
@@ -11,34 +12,45 @@
 
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
-
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        
+        <%if current_member.access_level == "AD"%>
+          <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="news_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               News
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class=" dropdown-menu" aria-labelledby="navbarDropdown" >
               <%= link_to "All News", entries_path, class: "dropdown-item"%>
               <%= link_to "Add News", new_entry_path, class: "dropdown-item"%>
              
             </div>
-        </li>
-
+           </li>
+        <%end%>
           <!-- Members Drop Down-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%if current_member.access_level == "MA" || current_member.access_level == "AD"%>
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="members_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Members
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "All Members", members_path, class: "dropdown-item"%>
               <%= link_to "Authorization Pending", pending_path, class: "dropdown-item"%>
-             
+            
+            <%if current_member.access_level == "AD"%>
+              <%= link_to "Level Access Management", access_level_path ,class: "dropdown-item", id: "access_level"%>
+
+
+             <%end%>
             </div>
           </li>
+          <%end%>
           <!-- end Members Drop Down-->
 
           <!-- Events Drop Down-->
+          <%if current_member.access_level == "TC" || current_member.access_level == "AD"%>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle btn btn-success mr-3 text-light font-weight-bold" href="#" id="events_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Events
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,14 +58,17 @@
               <%= link_to "Create Event", new_event_path, class: "dropdown-item"%>
             </div>
           </li>
+          <%end%>
           <!-- end Events Drop Down-->
 
+        <%if current_member.access_level == "AD"%>
 
-          <li class="nav-item">
+          <li class="nav-item" id="leader_board">
               
-              <%= link_to "Leader Board", attendances_path, class: "nav-link  btn btn-success mr-3 text-light font-weight-bold"%>
-         
+              <%= link_to "Leader Board", attendances_path , class: "nav-link  btn btn-success mr-3 text-light font-weight-bold"%>
+            </a>
           </li>
+        <%end%>  
         </ul>
 
         <!-- right-hand side menu-->
@@ -61,6 +76,7 @@
 
           <!-- logout -->
           <li class="nav-item">
+            <p> Welcome <%=p current_member.first_name%></p> 
             <%= link_to "Logout", destroy_member_session_path, method: :delete, class: "btn mr-3 text-primary " %>
           </li>
 
@@ -68,7 +84,10 @@
         </ul>
         <!-- end right-hand side menu-->
 
-    <% end %>
+
+    
     </div>
+
+    <% end %>
   </div>
 </nav>

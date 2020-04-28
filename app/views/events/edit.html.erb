@@ -1,3 +1,4 @@
+<%if current_member.access_level=="AD" || current_member.access_level=="TC"%>
 <h1>Edit Event</h1>
 
 <%= form_for @event do |f|%>
@@ -52,3 +53,7 @@
   </div>
 
 <% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>
