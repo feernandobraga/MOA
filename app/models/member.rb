@@ -4,9 +4,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :events
-  has_many :attendances
-  has_many :entries
+  has_many :events, dependent: :destroy
+  has_many :attendances, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   def self.is_pending_empty?
     # this method is called from the members#display_pending and returns:
