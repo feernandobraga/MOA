@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :member
-  has_many :attendances
+  has_many :attendances,  dependent: :destroy
 
   def current_id
     # this method is called from the members#display_pending and returns:

@@ -1,5 +1,6 @@
-<div class="col-md-9">
+<div class="col-md-9 leader-board" id="board">
     <div class="card mb-4">
+     <% if @leader_search %>
 <table class="table">
             <tr>
             <th> Points</th>
@@ -19,5 +20,6 @@
             <%}%>
 
 </table>
+    <% end %>
 </div>
 </div>

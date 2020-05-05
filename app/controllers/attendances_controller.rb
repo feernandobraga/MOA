@@ -43,13 +43,20 @@ class AttendancesController < ApplicationController
     
     end # end destroy
     def search
-      if params[:date1, :date2].present?  
-        @leader_search= Attendance.where("attendances.time BETWEEN ? AND ?", ":date1.beginning_of_day", ":date2.end_of_day").group("attendances.member_id").order("count(attendances.member_id) DESC").count 
+      if params[:date1].present? && params[:date2].present?
+        date1= params[:date1].to_date
+        date2= params[:date2].to_date
+        puts date1
+        puts date2
+        @leader_search= Attendance.where("attendances.time BETWEEN ? AND ?", date1.beginning_of_day, date2.end_of_day).group("attendances.member_id").order("count(attendances.member_id) DESC").count 
+        puts @leader_search
+        
 
+        render partial: 'leader_board'
         
         else 
           flash.now[:alert]= "Enter a valid range of dates"
-          render partial: 'leader_board'
+         
            
       end
     end
