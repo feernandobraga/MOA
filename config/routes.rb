@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   resources :attendances
   resources :entries
 
+  namespace :api do
+    namespace :v1 do
+      #resources :events
+      get 'events', to: 'events#index'
+      get 'sessions', to: 'sessions#index'
+      get 'news', to: 'entries#index'
+    end
+  end
+
 
 
   get 'remove_from_app/:id', to: 'members#remove_from_app', as: 'app_removal'

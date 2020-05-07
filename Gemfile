@@ -31,6 +31,8 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'jquery-ui-rails', '~> 4.2.1'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
