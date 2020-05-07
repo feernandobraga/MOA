@@ -16,5 +16,8 @@ require("jquery")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require bootstrap-datepicker
+//= require jquery.ui.datepicker
 
 import "bootstrap"
+

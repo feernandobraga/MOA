@@ -1,5 +1,6 @@
-<h1>Upcoming Events</h1>
+<%if current_member.access_level=="AD" || current_member.access_level=="TC"%>
 
+<h1>Upcoming Events</h1>
 <% @events.each do |event| %>
 
   <div class="col-md-9">
@@ -21,3 +22,7 @@
   </div>
 
 <% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

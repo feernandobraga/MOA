@@ -1,0 +1,31 @@
+<%if current_member.access_level=="AD"%>
+<% if @entry %>
+
+
+  <div class="card col-md-9">
+    <div class="card-body">
+      <h5 class="card-title">Event Title: <%= @entry.title %></h5>
+      
+      <div class="card-text">
+        <p>Description: <%= simple_format(@entry.description) %>
+      </div>
+
+      <div class="card-footer">
+        <%= link_to "Edit news", edit_entry_path(@entry), class: "btn btn-success btn-sm" %>
+        <%= link_to "Delete news", entry_path(@entry), method: :delete, class: "btn btn-danger btn-sm ml-2",
+        
+                    data: {confirm: "You are about to delete this News. Confirm?"} %>
+
+      </div>
+
+    </div>
+  </div>
+
+  <%= link_to "Cancel and go back", root_path, class: "text-decoration-none" %>
+
+
+<% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

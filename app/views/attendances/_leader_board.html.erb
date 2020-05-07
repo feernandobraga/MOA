@@ -1,0 +1,25 @@
+<div class="col-md-9 leader-board" id="board">
+    <div class="card mb-4">
+     <% if @leader_search %>
+<table class="table">
+            <tr>
+            <th> Points</th>
+            <th> First Name</th>
+            <th> Last Name</th>
+            </tr>
+            <% @leader_search.each {|id, count| %>
+                <tr>
+                    
+                    <td><%= count %></td>
+                    <td> <%=Member.find(id).first_name%></td>
+                    <td> <%=Member.find(id).last_name %></td>
+                    
+
+                </tr>
+             
+            <%}%>
+
+</table>
+    <% end %>
+</div>
+</div>

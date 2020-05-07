@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_130733) do
+ActiveRecord::Schema.define(version: 2020_05_01_010327) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "member_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "time"
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["member_id", "event_id"], name: "index_attendances_on_member_id_and_event_id", unique: true
+    t.index ["member_id"], name: "index_attendances_on_member_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_entries_on_member_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer "member_id", null: false
@@ -36,9 +56,13 @@ ActiveRecord::Schema.define(version: 2020_03_24_130733) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "access_level"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "members"
+  add_foreign_key "entries", "members"
   add_foreign_key "events", "members"
 end

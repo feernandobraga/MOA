@@ -1,3 +1,5 @@
+<%if current_member.access_level=="AD" || current_member.access_level=="TC"%>
+
 
 <%# if an event is sent from the events_controller, than display the page %>
 <% if @event %>
@@ -14,9 +16,15 @@
       </div>
 
       <div class="card-footer">
+      
         <%= link_to "Edit event", edit_event_path(@event), class: "btn btn-success btn-sm" %>
+       
         <%= link_to "Delete event", event_path(@event), method: :delete, class: "btn btn-danger btn-sm ml-2",
+        
                     data: {confirm: "You are about to delete this Event. Confirm?"} %>
+        <%= link_to "Event Attendance", attendance_path(@event.id), class: "btn btn-success btn-sm ml-2"%>
+        <% $current_event= @event.id %>
+
       </div>
 
     </div>
@@ -24,4 +32,10 @@
 
   <%= link_to "Cancel and go back", events_path, class: "text-decoration-none" %>
 
+    <%#= render 'attendance/attendance', obj: @event.attendances %>
+
 <% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

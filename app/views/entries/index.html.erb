@@ -1,0 +1,28 @@
+<%if current_member.access_level=="AD"%>
+<%#= link_to 'Sign out', destroy_member_session_path, method: :delete%>
+<h1>News  </h1>
+ 
+<% @entries.each do |new| %>
+
+  <div class="col-md-9">
+    <div class="card mb-4">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= new.title %></h5>
+        <p class="card-text"><%= truncate(new.description, length: 100) %></p>
+        <footer class="blockquote-footer mb-2 pb-1">Published by <%=new.member.first_name%></footer>
+
+        <!--<div class="card-footer bg-transparent border-secondary">idk</div>-->
+
+        <%= link_to "Show more", entry_path(new), class: "btn btn-outline-success" %>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>

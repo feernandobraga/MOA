@@ -1,0 +1,41 @@
+<%if current_member.access_level=="AD"%>
+<h1> Leader Board</h1>
+<div class="container">
+    <div class="row">
+       
+  <%= form_tag search_leader_path, remote: true,  method: :get do %>
+        
+            <div class='form-group row no-top-padding'>
+                    <div class='col-sm-5 '>
+                        <%= label_tag("Select date 1") %>
+                        <%= date_field_tag :date1, params[:date1], placeholder: "Pick date 1", autofocus: true, class: 'form-control form-control-md'%>
+                    </div>
+                    <div class='col-sm-5 '>
+                        <%= label_tag("Select date 2") %>
+                        <%= date_field_tag :date2, params[:date2], placeholder: "Pick date 2", autofocus: true, class: 'form-control form-control-md'%>
+                    </div>
+
+                <div class='col-sm-2 form-group'>
+                    <%= label_tag("Search") %>
+                    <%= button_tag type: :submit, class: "btn btn-warning btn-lg col-sm-12" do%>
+                       
+                      
+                    <%end%>
+            
+                </div>
+            </div>
+                       
+                    
+                       
+<%end%>
+   </div>
+
+    <%= render 'leader_board'%>   
+
+   </div>
+
+<%else%>
+<%= render 'layouts/access_denied'%>
+
+<%end%>
+
