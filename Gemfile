@@ -31,7 +31,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'jquery-ui-rails', '~> 4.2.1'
 
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors'
 
 gem 'simple_token_authentication', '~> 1.0'
 
