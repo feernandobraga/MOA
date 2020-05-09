@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # API Routes
   namespace :api do
-    namespace :v1 do
+    namespace :v1, defaults: {format: :json} do
       #resources :events
       get 'events', to: 'events#index'
       get 'sessions', to: 'sessions#index'

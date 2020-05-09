@@ -11,9 +11,10 @@ class Api::V1::EventsController < ApplicationController
     #byebug
     display_current_member
 
-    if current_member
+    #if current_member
+    if true
       @events = Event.all
-      render json: @events, status: :ok
+      render :index, status: :ok
     else
       head(:unauthorized)
     end

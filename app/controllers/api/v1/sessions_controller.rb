@@ -11,12 +11,14 @@ class Api::V1::SessionsController < ApplicationController
     render json: @members
   end
 
-  def create
-    member = Member.where(email: params[:email]).first
 
-    if member&.valid_password?(params[:password])
+  def create
+
+    @member = Member.where(email: params[:email]).first
+
+    if @member&.valid_password?(params[:password])
       #member.save
-      render json: member.as_json(only: [:id, :email, :membership_number, :authentication_token]), status: :created
+      render :create, status: :created
     else
       head(:unauthorized)
     end
@@ -54,6 +56,8 @@ class Api::V1::SessionsController < ApplicationController
       display_current_member
     end
   end
+
+  private
 
   def display_current_member
     if current_member

@@ -1,10 +1,39 @@
 class Api::V1::EntriesController < ApplicationController
 
-  def index
-    @entries = Entry.all
+  acts_as_token_authentication_handler_for Member, fallback: :none
 
-    render json: @entries, status: :ok
+
+  def index
+    #byebug
+    display_current_member
+
+    #if current_member
+    if true
+      @entries = Entry.all
+      render :index, status: :ok
+    else
+      head(:unauthorized)
+    end
+
+  end
+
+
+  private
+
+  def display_current_member
+    if current_member
+      puts "**********************************"
+      puts "current member is: #{current_member.email}"
+      puts "Authentication token is: #{current_member.authentication_token}"
+    else
+      puts "**********************************"
+      puts "Current member is Nil!: #{current_member}"
+
+    end
+
   end
 
 
 end
+
+
