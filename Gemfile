@@ -33,6 +33,8 @@ gem 'jquery-ui-rails', '~> 4.2.1'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'simple_token_authentication', '~> 1.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

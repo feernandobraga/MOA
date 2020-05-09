@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
 
+  before_action :authenticate_member!
 
   def index
     @members = Member.all
@@ -119,6 +120,7 @@ class MembersController < ApplicationController
 
   end
   def make_administrator
+    #TODO: fix bug where any user can scalate himself to an admin.
 
     @member = Member.find(params[:id])
     @member.update(:access_level => "AD")

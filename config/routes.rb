@@ -7,14 +7,19 @@ Rails.application.routes.draw do
   resources :attendances
   resources :entries
 
+  # API Routes
   namespace :api do
     namespace :v1 do
       #resources :events
       get 'events', to: 'events#index'
       get 'sessions', to: 'sessions#index'
+      post 'sessions', to: 'sessions#create'
+      delete 'sessions', to: 'sessions#destroy'
       get 'news', to: 'entries#index'
+
     end
   end
+  # END API routes
 
 
 

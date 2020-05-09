@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_010327) do
+ActiveRecord::Schema.define(version: 2020_05_09_010227) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_05_01_010327) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "access_level"
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_members_on_authentication_token", unique: true
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

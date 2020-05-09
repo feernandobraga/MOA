@@ -1,5 +1,7 @@
 class EntriesController < ApplicationController
 
+  before_action :authenticate_member!
+
     def index
       @entries = Entry.all
     end
