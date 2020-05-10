@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post 'sessions', to: 'sessions#create'
       delete 'sessions', to: 'sessions#destroy'
       get 'news', to: 'entries#index'
+      get 'news/:id', to: 'entries#show'
 
     end
   end

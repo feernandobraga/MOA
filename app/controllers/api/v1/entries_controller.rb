@@ -17,6 +17,10 @@ class Api::V1::EntriesController < ApplicationController
 
   end
 
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
 
   private
 
@@ -31,6 +35,10 @@ class Api::V1::EntriesController < ApplicationController
 
     end
 
+  end
+
+  def entry_params
+    params.require(:entry).permit( :title, :description, :member_id, :created_at)
   end
 
 
