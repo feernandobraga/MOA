@@ -13,7 +13,7 @@ class Api::V1::EventsController < ApplicationController
 
     #if current_member
     if true
-      @events = Event.all
+      @events = Event.all.order(time: :asc)
       render :index, status: :ok
     else
       head(:unauthorized)

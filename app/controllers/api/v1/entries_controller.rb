@@ -9,7 +9,7 @@ class Api::V1::EntriesController < ApplicationController
 
     #if current_member
     if true
-      @entries = Entry.all
+      @entries = Entry.all.order(created_at: :desc)
       render :index, status: :ok
     else
       head(:unauthorized)
