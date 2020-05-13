@@ -7,8 +7,8 @@ class Api::V1::EntriesController < ApplicationController
     #byebug
     display_current_member
 
-    #if current_member
-    if true
+    if current_member
+    #if true
       @entries = Entry.all.order(created_at: :desc)
       render :index, status: :ok
     else
@@ -18,7 +18,12 @@ class Api::V1::EntriesController < ApplicationController
   end
 
   def show
-    @entry = Entry.find(params[:id])
+    if current_member
+      @entry = Entry.find(params[:id])
+      render :show, status: :ok
+    else
+      head(:unauthorized)
+    end
   end
 
 

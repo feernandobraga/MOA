@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_action :authenticate_member!
 
     def index
-      @entries = Entry.all
+      @entries = Entry.all.order(created_at: :desc)
     end
   
   

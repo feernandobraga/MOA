@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   before_action :authenticate_member!
 
   def index
-    @members = Member.all
+    @members = Member.all.order(created_at: :desc)
   end
 
   def remove_from_app
@@ -60,7 +60,7 @@ class MembersController < ApplicationController
     # this method is called from the Authorization Pending button in the navbar.
     # it searches in the DB for members that have the authorized_for_app boolean set to false.
 
-    @members = Member.all.where(authorized_for_app: false)
+    @members = Member.all.where(authorized_for_app: false).order(created_at: :desc)
   end
 
 
@@ -120,7 +120,7 @@ class MembersController < ApplicationController
 
   end
   def make_administrator
-    #TODO: fix bug where any user can scalate himself to an admin.
+    #TODO: fix bug where any user can escalate himself to an admin.
 
     @member = Member.find(params[:id])
     @member.update(:access_level => "AD")

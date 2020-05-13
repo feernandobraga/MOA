@@ -11,8 +11,8 @@ class Api::V1::EventsController < ApplicationController
     #byebug
     display_current_member
 
-    #if current_member
-    if true
+    if current_member
+    #if true
       @events = Event.all.order(time: :asc)
       render :index, status: :ok
     else
@@ -21,7 +21,13 @@ class Api::V1::EventsController < ApplicationController
 
   end
 
-  def create
+  def show
+    if current_member
+      @event = Event.find(params[:id])
+      render :show, status: :ok
+    else
+      head(:unauthorized)
+    end
 
   end
 

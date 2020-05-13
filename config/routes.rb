@@ -12,11 +12,14 @@ Rails.application.routes.draw do
     namespace :v1, defaults: {format: :json} do
       #resources :events
       get 'events', to: 'events#index'
+      get 'events/:id', to: "events#show"
       get 'sessions', to: 'sessions#index'
       post 'sessions', to: 'sessions#create'
       delete 'sessions', to: 'sessions#destroy'
       get 'news', to: 'entries#index'
       get 'news/:id', to: 'entries#show'
+      resources :members, only: [:create] #POST request to sign up members
+
 
     end
   end
