@@ -14,6 +14,7 @@ class Api::V1::EventsController < ApplicationController
     if current_member
     #if true
       @events = Event.all.order(time: :asc)
+
       render :index, status: :ok
     else
       head(:unauthorized)
@@ -24,6 +25,10 @@ class Api::V1::EventsController < ApplicationController
   def show
     if current_member
       @event = Event.find(params[:id])
+
+      @eventAttendance = @event.attendances
+
+
       render :show, status: :ok
     else
       head(:unauthorized)

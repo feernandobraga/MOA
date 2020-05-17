@@ -1,4 +1,4 @@
 
     json.call(
-      @member,:email, :access_level, :authorized_for_app, :authentication_token
+      @member,:id, :email, :access_level, :authorized_for_app, :authentication_token
     )

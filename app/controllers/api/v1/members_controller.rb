@@ -18,7 +18,7 @@ class Api::V1::MembersController < ApplicationController
     #
     #display_current_member
 
-    member = Member.new(
+    @member = Member.new(
         email: params[:email],
         membership_number: params[:membership_number],
         first_name: params[:first_name],
@@ -28,12 +28,8 @@ class Api::V1::MembersController < ApplicationController
         password_confirmation: params[:password_confirmation]
     )
 
-    if member.save
-      render json: {
-          status: :created,
-          member: member
-      #TODO: FORMAT THE VIEW TO RETURN IT PROPERLY
-      }
+    if @member.save
+      render :create, status: :created
     else
       head(:bad_request)
     end
