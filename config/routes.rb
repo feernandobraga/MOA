@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'news', to: 'entries#index'
       get 'news/:id', to: 'entries#show'
       resources :members, only: [:create] #POST request to sign up members
-
+      resources :attendances, only: [:create, :destroy, :index] #POST request to attendance and delete
 
     end
   end
