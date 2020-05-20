@@ -48,7 +48,8 @@ class AttendancesController < ApplicationController
         date2= params[:date2].to_date
         puts date1
         puts date2
-        @leader_search= Attendance.where("attendances.time BETWEEN ? AND ?", date1.beginning_of_day, date2.end_of_day).group("attendances.member_id").order("count(attendances.member_id) DESC").count 
+        @leader_search= Attendance.where("attendances.time BETWEEN ? AND ?", date1.beginning_of_day, date2.end_of_day).group("attendances.member_id").order("count(attendances.member_id) DESC").count
+        #@leader_search= Attendance.where("events.time BETWEEN ? AND ?", date1.beginning_of_day, date2.end_of_day).group("attendances.member_id").order("count(attendances.member_id) DESC").count
         puts @leader_search
         
 

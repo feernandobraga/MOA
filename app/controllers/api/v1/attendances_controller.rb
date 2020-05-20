@@ -14,6 +14,7 @@ class Api::V1::AttendancesController < ApplicationController
     @reservation = Attendance.new(
         event_id: params[:event_id],
         member_id: params[:member_id],
+        time: params[:time]
     )
 
     if @reservation.save

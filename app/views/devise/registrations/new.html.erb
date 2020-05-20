@@ -46,12 +46,6 @@
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <%= f.check_box :authorized_for_app %>
-        <%= f.label :authorized_for_app %>
-      </div>
-    </div>
 
     <div class="form-group">
       <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>

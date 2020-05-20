@@ -1,41 +1,98 @@
-<%if current_member.access_level=="AD"%>
-<h1> Leader Board</h1>
-<div class="container">
-    <div class="row">
+<%#if current_member.access_level=="AD"%>
+<!--<h1>Leader Board</h1>-->
+
+<!--  <div class="row">-->
        
-  <%= form_tag search_leader_path, remote: true,  method: :get do %>
+  <%#= form_tag search_leader_path, remote: true,  method: :get do %>
         
-            <div class='form-group row no-top-padding'>
-                    <div class='col-sm-5 '>
-                        <%= label_tag("Select date 1") %>
-                        <%= date_field_tag :date1, params[:date1], placeholder: "Pick date 1", autofocus: true, class: 'form-control form-control-md'%>
-                    </div>
-                    <div class='col-sm-5 '>
-                        <%= label_tag("Select date 2") %>
-                        <%= date_field_tag :date2, params[:date2], placeholder: "Pick date 2", autofocus: true, class: 'form-control form-control-md'%>
-                    </div>
+<!--    <div class='form-group row no-top-padding'>-->
+<!--            <div class='col-sm-4 '>-->
+                <%#= label_tag("Select date 1") %>
+                <%#= date_field_tag :date1, params[:date1], placeholder: "Pick date 1", autofocus: true, class: 'form-control form-control-md'%>
+<!--            </div>-->
+<!--            <div class='col-sm-4 '>-->
+                <%#= label_tag("Select date 2") %>
+                <%#= date_field_tag :date2, params[:date2], placeholder: "Pick date 2", autofocus: true, class: 'form-control form-control-md'%>
+<!--            </div>-->
 
-                <div class='col-sm-2 form-group'>
-                    <%= label_tag("Search") %>
-                    <%= button_tag type: :submit, class: "btn btn-warning btn-lg col-sm-12" do%>
-                       
-                      
-                    <%end%>
-            
-                </div>
-            </div>
-                       
-                    
-                       
-<%end%>
-   </div>
+<!--        <div class='col-3 form-group'>-->
+            <%#= label_tag("Search") %>
 
-    <%= render 'leader_board'%>   
+          <%#= button_tag type: :submit, class: "btn btn-warning btn-lg col-sm-12" do%>
+               <%#= content_tag(:strong,'Search') %>
 
-   </div>
+            <%#end%>
 
+
+<!--        </div>-->
+<!--    </div>-->
+
+  <%#end%>
+<!-- </div>-->
+
+    <%#= render 'leader_board'%>
+
+<!--</div>-->
+
+<%#else%>
+<%#= render 'layouts/access_denied'%>
+
+<%#end%>
+
+
+<%if current_member.access_level=="AD"%>
+
+  <div class="row">
+    <div class="col-sm">
+      <h1>Leader Board</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <%= form_tag search_leader_path, remote: true,  method: :get do %>
+
+        <div class='form-group row no-top-padding'> <!-- Form Start -->
+
+          <!-- First date picker -->
+          <div class="col-sm-4 p-3">
+            <%= label_tag("Select initial date") %>
+            <%= date_field_tag :date1, params[:date1], placeholder: "Pick date 1", autofocus: true, class: 'form-control form-control-md'%>
+          </div>
+
+          <!-- Second date picker -->
+          <div class="col-sm-4 p-3">
+            <%= label_tag("Select final date") %>
+            <%= date_field_tag :date2, params[:date2], placeholder: "Pick date 2", autofocus: true, class: 'form-control form-control-md'%>
+          </div>
+
+          <!-- Label and search button -->
+          <div class="col-sm-2 p-3 d-flex flex-column justify-content-end">
+
+              <%=button_tag type: :submit, class: "btn btn-warning ph-5" do%>
+                <%= content_tag(:strong,'Search') %>
+              <%end%>
+
+          </div>
+
+        </div> <!-- Form End -->
+
+      <%end %> <!-- rails form end -->
+    </div> <!-- selectors col end -->
+  </div> <!-- selectors row end -->
+
+  <!-- leader board results -->
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'leader_board'%>
+    </div>
+  </div>
+  <!-- end leader board results -->
+
+<!-- in case user is not AD - access denied -->
 <%else%>
-<%= render 'layouts/access_denied'%>
-
+  <%= render 'layouts/access_denied'%>
 <%end%>
+
+
 

@@ -101,7 +101,7 @@ class MembersController < ApplicationController
 
   end
   def access_level
-    @members = Member.all
+    @members = Member.all.order(first_name: :asc)
   end
 
   def make_trip_coordinator
