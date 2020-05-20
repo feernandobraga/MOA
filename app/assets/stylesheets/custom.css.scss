@@ -1,8 +1,10 @@
+
 @import 'bootstrap/dist/css/bootstrap';
+
 
 .moa-navbar{
   background-color: #FCD116 ;
-  border-bottom: 5px solid #008751;
+  border-bottom: 7px solid #008751;
 }
 
 .moa-navbar > *{
@@ -31,25 +33,60 @@
 }
 .moa-footer{
   background-color:  #008751 ;
-  border-top: 2px solid black;
+  //border-top: 2px solid black;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 30px;
+  height: 35px;
   z-index: 999;
   font-weight: bold;
   font-size: 30px;
   padding-right: 30px;
-  margin-top: 150px;
-  //padding-top: 100px;
 }
+
+.footer-helper{
+  height: 30px;
+  width: 100%;
+}
+
+.navTitle{
+  color: white;
+}
+
+.navTitle:hover{
+  color: white;
+}
+
+
+
 //.leader-board{
 //  display: inline-block;
 //}
 
-//.container {
-//  border: 1px solid red;
-//}
+.borda {
+  border: 1px solid red;
+}
+
+.btn-success {
+  background-color: #008751;
+  border-color: #008751;
+}
+
+.btn-success:hover {
+  background-color: #00633b;
+  border-color: #004a2c;
+}
+
+.btn-outline-success{
+  border-color: #008751;
+  color: #008751;
+}
+
+.btn-outline-success:hover {
+  background-color: #008751;
+  border-color: #008751;
+}
+
 //
 //.row {
 //  border: 1px dashed purple;
