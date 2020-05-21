@@ -3,8 +3,8 @@
 
 
 .moa-navbar{
-  background-color: #FCD116 ;
-  border-bottom: 7px solid #008751;
+  background-color: #FFCE00 ;
+  border-bottom: 7px solid #007E3A;
 }
 
 .moa-navbar > *{
@@ -32,7 +32,7 @@
   text-align: center;   
 }
 .moa-footer{
-  background-color:  #008751 ;
+  background-color:  #007E3A ;
   //border-top: 2px solid black;
   position: fixed;
   bottom: 0;
@@ -68,17 +68,17 @@
 }
 
 .btn-success {
-  background-color: #008751;
+  background-color: #007E3A;
   border-color: #008751;
 }
 
 .btn-success:hover {
   background-color: #00633b;
-  border-color: #004a2c;
+  border-color: #00633b;
 }
 
 .btn-outline-success{
-  border-color: #008751;
+  border-color: #007E3A;
   color: #008751;
 }
 
@@ -86,6 +86,7 @@
   background-color: #008751;
   border-color: #008751;
 }
+
 
 //
 //.row {

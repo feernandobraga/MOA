@@ -1,8 +1,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light mb-3 p-5 moa-navbar" id="">
 
-  <div class="ml-5">
-  <%= link_to "MOA", root_path, class: "text-decoration-none ml-5 display-3 navTitle" %>
+  <div class="ml-5 d-flex align-items-center">
+    <%= image_tag("moa_logo_500px.png", alt: "Moke Owners Association Victoria", width: 150) %>
+    <%= link_to "MOA", root_path, class: "text-decoration-none ml-5 display-3 navTitle" %>
   </div>
 
   <div class="container navbar-right">
@@ -80,7 +81,7 @@
 
           <!-- logout -->
           <li class="nav-item">
-            <p> Welcome <%=p current_member.first_name%></p> 
+            <p> Welcome <%=p current_member.first_name%></p>
             <%= link_to "Logout", destroy_member_session_path, method: :delete, class: "btn mr-3 text-primary " %>
           </li>
 
