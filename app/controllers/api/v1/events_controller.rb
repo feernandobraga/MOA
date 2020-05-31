@@ -15,6 +15,8 @@ class Api::V1::EventsController < ApplicationController
     #if true
       @events = Event.all.order(time: :asc)
 
+      #@eventAttendance = @events.attendances
+
       render :index, status: :ok
     else
       head(:unauthorized)

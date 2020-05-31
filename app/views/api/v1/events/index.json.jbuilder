@@ -19,6 +19,7 @@ json.array! @events do |event|
   json.event_date_and_time event.time
   json.description event.description
   json.created_at event.created_at
+  json.attendees event.attendances
 
 end
 
