@@ -25,6 +25,7 @@ class Api::V1::AttendancesController < ApplicationController
           time: params[:time]
       )
 
+
       if @reservation.save
         @event = Event.find(params[:event_id])
         @eventAttendance = @event.attendances
@@ -37,12 +38,13 @@ class Api::V1::AttendancesController < ApplicationController
       head(:unauthorized)
     end
 
+
   end
 
   def destroy
 
     if current_member
-
+      puts("DELETEEEE###############################this is working?? #{current_member}")
       @reservation = Attendance.find(params[:id])
 
       if @reservation.destroy
