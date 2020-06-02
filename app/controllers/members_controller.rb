@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   before_action :authenticate_member!
 
   def index
-    @members = Member.all.order(created_at: :desc)
+    @members = Member.all.order(first_name: :asc)
   end
 
   def remove_from_app
